@@ -19,10 +19,11 @@ body {
 
 input {
     width: 100%;
-    padding: 10px 0 0 0;
-    margin: 10px 0;
+    padding: 2px 0px 2px 0px;
+    margin: 10px 0px 10px 0px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: large;
 }
 
 button {

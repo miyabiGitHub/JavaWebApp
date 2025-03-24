@@ -1,0 +1,7 @@
+データベース接続用コンパイルコマンド
+javac -d ./bin -cp /Users/masayakato/ankenkanri-system/lib/mysql-connector-j-9.2.0.jar ./src/main/java/com/javaapppractice/ankenkanri_system/DatabaseConnection.java
+
+※ankenkanri-system/bin 配下にコンパイル後のクラスファイルを配置
+
+データベース接続用実行コマンド
+java -cp /Users/masayakato/ankenkanri-system/lib/mysql-connector-j-9.2.0.jar:./bin com.javaapppractice.ankenkanri_system.DatabaseConnection
