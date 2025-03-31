@@ -6,7 +6,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
+        const errorMessage = document.getElementById("errorMessage");
 
+        // 🔹 ログインAPIのエンドポイントを `/login` に変更
         const response = await fetch("http://localhost:8080/login", {
             method: "POST",
             headers: {
@@ -15,13 +17,15 @@ document.addEventListener("DOMContentLoaded", function() {
             body: JSON.stringify({ username, password })
         });
 
-        const data = await response.text();
+        // 🔹 サーバーからのレスポンスをJSONとして取得
+        const data = await response.json();
 
-        if (response.ok) {
+        // 🔹 レスポンスの結果に応じて処理を分岐
+        if (response.ok && data.success) {
             alert("ログイン成功！");
             window.location.href = "main.html"; // メイン画面へ遷移
         } else {
-            document.getElementById("errorMessage").textContent = "ログインに失敗しました。";
+            errorMessage.textContent = data.error || "ログインに失敗しました。";
         }
     });
 });
