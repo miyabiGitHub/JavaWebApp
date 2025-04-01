@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ログイン - 案件管理システム</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/css/styles_index.css">
 </head>
 <body>
     <div class="login-container">
@@ -16,11 +16,11 @@
             <label for="password">パスワード:</label>
             <input type="password" id="password" name="password" required>
 
-            <button type="submit">ログイン</button>
+            <button id="loginButtom" type="button" onclick="mainPage(); return false;">ログイン</button>
             <p id="errorMessage" class="error-message"></p>
         </form>
     </div>
 
-    <script src="app.js"></script>
+    <script src="/js/app_index.js"></script>
 </body>
 </html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メインメニュー</title>
+    <link rel="stylesheet" href="/css/styles_main.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- サイドバー -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="#" onclick="showContent('案件情報一覧')">案件情報一覧</a></li>
+                <li><a href="#" onclick="showContent('申請待ち')">申請待ち</a></li>
+                <li><a href="#" onclick="showContent('承認済み')">承認済み</a></li>
+                <li><a href="#" onclick="showContent('差し戻し')">差し戻し</a></li>
+                <li><a href="#" onclick="showContent('社員情報')">社員情報</a></li>
+                <li><a href="#" onclick="showContent('ユーザ情報')">ユーザ情報</a></li>
+                <li><a href="#" onclick="logout()">ログアウト</a></li>
+            </ul>
+        </nav>
+
+        <!-- メインコンテンツ -->
+        <main class="content">
+            <h1 id="title">案件情報一覧</h1>
+            <div id="content-area">
+                <ul id="data-list">
+                    <li>案件1: システム開発</li>
+                    <li>案件2: ウェブサイト制作</li>
+                    <li>案件3: モバイルアプリ開発</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <script src="/js/app_main.js"></script>
+</body>
+</html>
