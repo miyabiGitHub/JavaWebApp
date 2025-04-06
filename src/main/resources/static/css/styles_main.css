@@ -60,3 +60,13 @@ h1 {
     margin-bottom: 5px;
     border-radius: 4px;
 }
+
+.sidebar ul ul {
+    list-style-type: circle;
+    padding-left: 15px;
+}
+
+.sidebar ul ul li a {
+    font-size: 14px;
+}
+

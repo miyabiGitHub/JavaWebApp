@@ -12,10 +12,16 @@
         <!-- サイドバー -->
         <nav class="sidebar">
             <ul>
-                <li><a href="#" onclick="showContent('案件情報一覧')">案件情報一覧</a></li>
-                <li><a href="#" onclick="showContent('申請待ち')">申請待ち</a></li>
-                <li><a href="#" onclick="showContent('承認済み')">承認済み</a></li>
-                <li><a href="#" onclick="showContent('差し戻し')">差し戻し</a></li>
+                <li><a href="#" onclick="showContent('案件新規登録')">案件新規登録</a></li>
+                <li>
+                    <a href="#" onclick="toggleSubMenu()">案件情報</a>
+                    <ul id="submenu" style="display: none; margin-left: 20px;">
+                        <li><a href="#" onclick="showContent('案件情報一覧')">案件情報一覧</a></li>
+                        <li><a href="#" onclick="showContent('申請待ち')">申請待ち</a></li>
+                        <li><a href="#" onclick="showContent('差し戻し')">差し戻し</a></li>
+                        <li><a href="#" onclick="showContent('承認済み')">承認済み</a></li>
+                    </ul>
+                </li>
                 <li><a href="#" onclick="showContent('社員情報')">社員情報</a></li>
                 <li><a href="#" onclick="showContent('ユーザ情報')">ユーザ情報</a></li>
                 <li><a href="#" onclick="logout()">ログアウト</a></li>
