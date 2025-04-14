@@ -19,6 +19,28 @@ function showContent(menu) {
             contentArea.innerHTML = '<p>登録画面の読み込みに失敗しました。</p>';
         });
     }
+    if (menu === "ユーザ情報登録") {
+        fetch('users.html')
+        .then(response => response.text())
+        .then(html => {
+            contentArea.innerHTML = html;  // ← innerHTMLで埋め込む
+        })
+        .catch(error => {
+            console.error('読み込みエラー:', error);
+            contentArea.innerHTML = '<p>登録画面の読み込みに失敗しました。</p>';
+        });       
+    }
+    if (menu === "社員情報登録") {
+        fetch('employee.html')
+        .then(response => response.text())
+        .then(html => {
+            contentArea.innerHTML = html;  // ← innerHTMLで埋め込む
+        })
+        .catch(error => {
+            console.error('読み込みエラー:', error);
+            contentArea.innerHTML = '<p>登録画面の読み込みに失敗しました。</p>';
+        });
+    }
     if (["案件情報一覧", "申請待ち", "承認済み", "差し戻し"].includes(menu)) {
         contentArea.innerHTML = `
             <ul id="data-list">
@@ -27,23 +49,37 @@ function showContent(menu) {
                 <li>案件3: モバイルアプリ開発</li>
             </ul>
         `;
-    } else if (menu === "社員情報") {
-        contentArea.innerHTML = `<p>社員情報を登録するフォーム（仮）</p>`;
-    } else if (menu === "ユーザ情報") {
-        contentArea.innerHTML = `<p>ユーザ情報を登録するフォーム（仮）</p>`;
-    } else if (menu === "案件新規登録") {
-        contentArea.innerHTML= `
-            <p>ユーザ情報を登録するフォーム（仮）</p>
-        `;
+    } else if (menu === "社員情報一覧"){
+        contentArea.innerHTML = `<p>社員情報のリスト（仮）</p>`;
+    } else if (menu === "ユーザ情報一覧"){
+        contentArea.innerHTML = `<p>ユーザ情報のリスト（仮）</p>`;
     }
 }
 
-function toggleSubMenu() {
-    const submenu = document.getElementById('submenu');
-    if (submenu.style.display === 'none') {
-        submenu.style.display = 'block';
+function toggleSubMenu1() {
+    const submenu1 = document.getElementById('submenu1');
+    if (submenu1.style.display === 'none') {
+        submenu1.style.display = 'block';
     } else {
-        submenu.style.display = 'none';
+        submenu1.style.display = 'none';
+    }
+}
+
+function toggleSubMenu2() {
+    const submenu2 = document.getElementById('submenu2');
+    if (submenu2.style.display === 'none') {
+        submenu2.style.display = 'block';
+    } else {
+        submenu2.style.display = 'none';
+    }
+}
+
+function toggleSubMenu3() {
+    const submenu3 = document.getElementById('submenu3');
+    if (submenu3.style.display === 'none') {
+        submenu3.style.display = 'block';
+    } else {
+        submenu3.style.display = 'none';
     }
 }
 

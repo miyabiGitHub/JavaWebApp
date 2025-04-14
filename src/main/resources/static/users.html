@@ -1,0 +1,36 @@
+<!-- users.html -->
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styles_users.css">
+</head>
+<div class="register-form">
+    <form>
+        <label for="title">案件名</label>
+        <input type="text" id="title" name="title" required>
+  
+        <label for="customer">顧客名</label>
+        <input id="customer" name="customer"></input>
+
+        <label for="description">業務内容</label>
+        <input id="description" name="description"></input>
+
+        <label for="syain">参画者</label>
+        <input id="syain" name="syain"></input>
+        
+        <label for="eigyo">担当営業</label>
+        <select id="eigyo" name="eigyo">
+            <option value="1">山田 太郎</option>
+            <option value="2">佐藤 花子</option>
+            <option value="3">本田 二郎</option>
+        </select>
+  
+        <label for="type">案件タイプ</label>
+        <select id="type" name="type">
+            <option value="web">インフラ</option>
+            <option value="mobile">開発</option>
+            <option value="system">その他</option>
+        </select>
+  
+        <button type="submit">申請</button>
+    </form>
+</div>
