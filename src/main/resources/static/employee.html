@@ -1,36 +1,33 @@
-<!-- employee.html -->
+<!-- 社員情報登録 -->
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/styles_employee.css">
 </head>
 <div class="register-form">
     <form>
-        <label for="title">案件名</label>
-        <input type="text" id="title" name="title" required>
+        <label for="name">社員名</label>
+        <input type="text" name="name" required></input>
   
-        <label for="customer">顧客名</label>
-        <input id="customer" name="customer"></input>
+        <label for="department">所属</label>
+        <select name="department">
+            <option value="1">エンジニアリング部</option>
+            <option value="2">営業部</option>
+        </select>
 
-        <label for="description">業務内容</label>
-        <input id="description" name="description"></input>
+        <label for="telnumber">連絡先</label>
+        <input name="telnumber" required></input>
 
-        <label for="syain">参画者</label>
-        <input id="syain" name="syain"></input>
+        <label for="mailaddress">メールアドレス</label>
+        <input name="mailaddress" required></input>
         
         <label for="eigyo">担当営業</label>
-        <select id="eigyo" name="eigyo">
-            <option value="1">山田 太郎</option>
-            <option value="2">佐藤 花子</option>
-            <option value="3">本田 二郎</option>
+        <select name="eigyo">
+            <option value="1">なし</option>
+            <option value="2">山田 太郎</option>
+            <option value="3">佐藤 花子</option>
+            <option value="4">本田 二郎</option>
         </select>
   
-        <label for="type">案件タイプ</label>
-        <select id="type" name="type">
-            <option value="web">インフラ</option>
-            <option value="mobile">開発</option>
-            <option value="system">その他</option>
-        </select>
-  
-        <button type="submit">申請</button>
+        <button type="submit">登録</button>
     </form>
 </div>
