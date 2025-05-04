@@ -83,7 +83,6 @@ function toggleSubMenu3() {
     }
 }
 
-
 function logout() {
     window.location.href = "index.html";
 }

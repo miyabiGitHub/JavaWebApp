@@ -1,36 +1,33 @@
-/* register.css */
-form {
-    max-width: 1000px;
+.register-form {
+    max-width: 400px;
     margin: 0 auto;
-    background-color: #f7f7f7;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
   }
   
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
+  .register-form form {
+    display: flex;
+    flex-direction: column;
   }
   
-  input, select {
-    width: 100%;
-    padding: 5px 5px 5px 5px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: medium;
+  .register-form label {
+    margin-top: 10px;
   }
   
-  button {
-    margin: 20px auto 0 auto;
+  .register-form input, 
+  .register-form select {
+    padding: 8px;
+    margin-top: 5px;
+  }
+  
+  .register-form button {
+    margin-top: 15px;
+    padding: 10px;
     background-color: #4CAF50;
     color: white;
-    padding: 5px 50px;
     border: none;
-    border-radius: 8px;
     cursor: pointer;
-    font-size: medium;
+  }
+  
+  .register-form button:hover {
+    background-color: #45a049;
   }
   
