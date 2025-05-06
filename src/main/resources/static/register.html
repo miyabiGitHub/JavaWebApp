@@ -1,37 +1,81 @@
-<!-- 新規案件登録画面 -->
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/styles_register.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新規案件登録</title>
+  <link rel="stylesheet" href="/css/styles_common.css">
+  <link rel="stylesheet" href="/css/styles_register.css">  
 </head>
-<div class="register-form">
-    <form>
-        <label for="title">案件名</label>
-        <input type="text" name="title" required>
-  
-        <label for="customer">顧客名</label>
-        <input name="customer"></input>
+<body>
 
-        <label for="description">業務内容</label>
-        <input name="description"></input>
+  <div class="container">
+    <!-- 🟡 ここはmain.htmlと同じサイドバーをそのまま記述 -->
+    <nav class="sidebar">
+      <ul>
+          <li><a href="register.html" onclick="showContent('案件新規登録')">案件新規登録</a></li>
+          <li>
+              <a href="#" onclick="toggleSubMenu1()">案件情報</a>
+              <ul id="submenu1" style="display: none; margin-left: 20px;">
+                  <li><a href="#" onclick="showContent('案件情報一覧')">案件情報一覧</a></li>
+                  <li><a href="#" onclick="showContent('申請待ち')">申請待ち</a></li>
+                  <li><a href="#" onclick="showContent('差し戻し')">差し戻し</a></li>
+                  <li><a href="#" onclick="showContent('承認済み')">承認済み</a></li>
+              </ul>
+          </li>
+          <li>
+              <a href="#" onclick="toggleSubMenu2()">社員情報</a>
+              <ul id="submenu2" style="display: none; margin-left: 20px;">
+                  <li><a href="#" onclick="showContent('社員情報一覧')">社員情報一覧</a></li>
+                  <li><a href="employee.html" onclick="showContent('社員情報登録')">社員情報登録</a></li>
+              </ul>
+          </li>
+          <li>
+              <a href="#" onclick="toggleSubMenu3()">ユーザ情報</a>
+              <ul id="submenu3" style="display: none; margin-left: 20px;">
+                  <li><a href="#" onclick="showContent('ユーザ情報一覧')">ユーザ情報一覧</a></li>
+                  <li><a href="users.html" onclick="showContent('ユーザ情報登録')">ユーザ情報登録</a></li>
+              </ul>
+          </li>
+          <li><a href="#" onclick="logout()">ログアウト</a></li>
+      </ul>
+    </nav>   
 
-        <label for="syain">参画者</label>
-        <input name="syain"></input>
+    <main class="content">
+        <h1>新規案件登録</h1>
         
-        <label for="eigyo">担当営業</label>
-        <select name="eigyo">
-            <option value="1">山田 太郎</option>
-            <option value="2">佐藤 花子</option>
-            <option value="3">本田 二郎</option>
-        </select>
-  
-        <label for="type">案件タイプ</label>
-        <select name="type">
-            <option value="web">インフラ</option>
-            <option value="mobile">開発</option>
-            <option value="system">その他</option>
-        </select>
-  
-        <button type="submit">申請</button>
-    </form>
-</div>
-  
+        <div class="register-form">
+        <form id="registerForm">
+            <label for="title">案件名</label>
+            <input type="text" name="title" id="title" required>
+
+            <label for="customer">顧客名</label>
+            <input type="text" name="customer" id="customer" required>
+
+            <label for="description">業務内容</label>
+            <input type="text" name="description" id="description" required>
+
+            <label for="syain">参画者</label>
+            <input type="text" name="syain" id="syain" required>
+            
+            <label for="eigyo">担当営業</label>
+            <select name="eigyo" id="eigyo">
+                <option value="1">山田 太郎</option>
+                <option value="2">佐藤 花子</option>
+                <option value="3">本田 二郎</option>
+            </select><br>
+
+            <label for="type">案件タイプ</label>
+            <select name="type" id="type">
+                <option value="infra">インフラ</option>
+                <option value="dev">開発</option>
+                <option value="other">その他</option>
+            </select><br>
+
+            <button type="submit">申請</button>
+        </form>
+    </div>
+
+    <script src="/js/app_register.js"></script>
+</body>
+</html>

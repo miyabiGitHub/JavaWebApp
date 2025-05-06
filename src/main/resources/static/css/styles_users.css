@@ -1,33 +1,63 @@
-.register-form {
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  .register-form form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .register-form label {
-    margin-top: 10px;
-  }
-  
-  .register-form input, 
-  .register-form select {
-    padding: 8px;
-    margin-top: 5px;
-  }
-  
-  .register-form button {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .register-form button:hover {
-    background-color: #45a049;
-  }
-  
+/* ✅ タイトル */
+h1 {
+  font-size: 24px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 10px;
+}
+
+/* ✅ フォーム全体 */
+form {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.users-form {
+  background-color: #ecf0f1;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}

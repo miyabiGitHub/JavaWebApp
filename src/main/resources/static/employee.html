@@ -1,33 +1,69 @@
-<!-- 社員情報登録 -->
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/styles_employee.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>社員情報登録</title>
+  <link rel="stylesheet" href="/css/styles_common.css">
+  <link rel="stylesheet" href="/css/styles_employee.css">
 </head>
-<div class="register-form">
-    <form>
-        <label for="name">社員名</label>
-        <input type="text" name="name" required></input>
-  
-        <label for="department">所属</label>
-        <select name="department">
-            <option value="1">エンジニアリング部</option>
-            <option value="2">営業部</option>
-        </select>
+<body>
 
-        <label for="telnumber">連絡先</label>
-        <input name="telnumber" required></input>
+  <div class="container">
+    <!-- ✅ サイドバー（mainと同じ） -->
+    <nav class="sidebar">
+        <ul>
+            <li><a href="register.html" onclick="showContent('案件新規登録')">案件新規登録</a></li>
+            <li>
+                <a href="#" onclick="toggleSubMenu1()">案件情報</a>
+                <ul id="submenu1" style="display: none; margin-left: 20px;">
+                    <li><a href="#" onclick="showContent('案件情報一覧')">案件情報一覧</a></li>
+                    <li><a href="#" onclick="showContent('申請待ち')">申請待ち</a></li>
+                    <li><a href="#" onclick="showContent('差し戻し')">差し戻し</a></li>
+                    <li><a href="#" onclick="showContent('承認済み')">承認済み</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" onclick="toggleSubMenu2()">社員情報</a>
+                <ul id="submenu2" style="margin-left: 20px;">
+                    <li><a href="#" onclick="showContent('社員情報一覧')">社員情報一覧</a></li>
+                    <li><a href="employee.html" onclick="showContent('社員情報登録')">社員情報登録</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" onclick="toggleSubMenu3()">ユーザ情報</a>
+                <ul id="submenu3" style="display: none; margin-left: 20px;">
+                    <li><a href="#" onclick="showContent('ユーザ情報一覧')">ユーザ情報一覧</a></li>
+                    <li><a href="users.html" onclick="showContent('ユーザ情報登録')">ユーザ情報登録</a></li>
+                </ul>
+            </li>
+            <li><a href="#" onclick="logout()">ログアウト</a></li>
+        </ul>
+    </nav>
 
-        <label for="mailaddress">メールアドレス</label>
-        <input name="mailaddress" required></input>
-        
-        <label for="eigyo">担当営業</label>
-        <select name="eigyo">
-            <option value="1">なし</option>
-            <option value="2">山田 太郎</option>
-            <option value="3">佐藤 花子</option>
-            <option value="4">本田 二郎</option>
-        </select>
-  
-        <button type="submit">登録</button>
-    </form>
-</div>
+    <!-- ✅ メインコンテンツ -->
+    <main class="content">
+        <h1>社員情報登録</h1>
+
+        <div class="employee-form">
+            <form id="employeeForm">
+                <label for="empid">社員ID:</label><br>
+                <input type="text" id="empid" name="empid" required><br><br>
+
+                <label for="empname">社員名:</label><br>
+                <input type="text" id="empname" name="empname" required><br><br>
+
+                <label for="department">部署:</label><br>
+                <input type="text" id="department" name="department"><br><br>
+
+                <button type="submit">登録</button>
+            </form>
+        </div>
+
+      <p id="result"></p>
+    </main>
+  </div>
+
+  <script src="/js/app_employee.js"></script>
+</body>
+</html>
