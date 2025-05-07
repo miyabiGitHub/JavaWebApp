@@ -1,17 +1,25 @@
 package com.javaapppractice.ankenkanri_system;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController // ★注意：@RestControllerにする（@Controllerじゃない）
+@RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "*") // フロントのHTMLから呼べるように
 public class UserController {
+
+    @Autowired
+    private UserRepository userRepository;
 
     @PostMapping
     public String registerUser(@RequestBody UserRequest userRequest) {
-        System.out.println("受け取ったユーザID: " + userRequest.getUserid());
-        System.out.println("受け取ったパスワード: " + userRequest.getPassword());
-        System.out.println("受け取ったロール: " + userRequest.getRole());
+        User user = new User();
+        user.setUserid(userRequest.getUserid());
+        user.setPassword(userRequest.getPassword());
+        user.setRole(userRequest.getRole());
 
-        return "登録成功！"; // レスポンスメッセージ
+        userRepository.save(user);
+        
+        return "登録成功！";
     }
 }

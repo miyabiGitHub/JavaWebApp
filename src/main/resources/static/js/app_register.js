@@ -1,39 +1,28 @@
-document.getElementById('registerForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+document.getElementById('registerForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-    // 入力値を取得
     const data = {
-        title: document.getElementById('title').value,
-        customer: document.getElementById('customer').value,
-        description: document.getElementById('description').value,
-        syain: document.getElementById('syain').value,
-        eigyo: document.getElementById('eigyo').value,
-        type: document.getElementById('type').value
+      title: document.querySelector('input[name="title"]').value,
+      customer: document.querySelector('input[name="customer"]').value,
+      description: document.querySelector('input[name="description"]').value,
+      syain: document.querySelector('input[name="syain"]').value,
+      eigyo: document.querySelector('select[name="eigyo"]').value,
+      type: document.querySelector('select[name="type"]').value
     };
 
-    console.log('送信データ:', data);
-
-    // 仮のPOST送信 (バックエンドに合わせてURL変更)
-    fetch('/projects', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+    fetch('/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
     })
     .then(response => {
-        if (response.ok) {
-            alert('案件が登録されました！');
-            document.getElementById('registerForm').reset();
-        } else {
-            alert('登録に失敗しました。');
-        }
+      if (!response.ok) throw new Error('エラー');
+      return response.text();
     })
-    .catch(error => {
-        console.error('エラー:', error);
-        alert('通信エラーが発生しました。');
-    });
+    .then(data => alert('登録成功: ' + data))
+    .catch(error => alert('登録失敗: ' + error));
 });
+
 
 function toggleSubMenu1() {
     const submenu1 = document.getElementById('submenu1');
