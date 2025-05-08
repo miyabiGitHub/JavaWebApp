@@ -1,41 +1,40 @@
-//document.addEventListener("DOMContentLoaded", function() {
-//    const loginForm = document.getElementById("loginForm");
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-//    loginForm.addEventListener("submit", async function(event) {
-//        event.preventDefault();
+    const loginData = {
+        userid: document.getElementById('username').value,
+        password: document.getElementById('password').value
+    };
 
-//        const username = document.getElementById("username").value;
-//        const password = document.getElementById("password").value;
-//        const errorMessage = document.getElementById("errorMessage");
-
-        // 🔹 ログインAPIのエンドポイントを `/login` に変更
-        //const response = await fetch("http://localhost:8080/login", {
-        //    method: "POST",
-        //    headers: {
-        //        "Content-Type": "application/json"
-        //    },
-        //    body: JSON.stringify({ username, password })
-        //});
-
-        // 🔹 サーバーからのレスポンスをJSONとして取得
-        //const data = await response.json();
-
-        // 🔹 レスポンスの結果に応じて処理を分岐
-        //if (response.ok && data.success) {
-        //    alert("ログイン成功！");
-        //    window.location.href = "main.html"; // メイン画面へ遷移
-        //} else {
-         //   errorMessage.textContent = data.error || "ログインに失敗しました。";
-        //}
- //   });
-//});
-
-document.getElementById("loginButton").addEventListener("click", function(myevent){
-    myevent.preventDefault();
-    mainPage();
+    fetch('/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(loginData)
+    })
+    .then(response => {
+        if (response.ok) {
+            // ログイン成功
+            window.location.href = "main.html";
+        } else {
+            // ログイン失敗
+            document.getElementById('errorMessage').textContent = "ログインに失敗しました。";
+        }
+    })
+    .catch(error => {
+        console.error('エラー:', error);
+        document.getElementById('errorMessage').textContent = "サーバーエラーが発生しました。";
+    });
 });
 
-function mainPage(){
-    location.href="main.html"
-}
+
+//document.getElementById("loginButton").addEventListener("click", function(myevent){
+//    myevent.preventDefault();
+//    mainPage();
+//});
+
+//function mainPage(){
+//    location.href="main.html"
+//}
 

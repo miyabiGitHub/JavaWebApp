@@ -4,15 +4,16 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "users")  // ✅ テーブル名を明示的に「users」にする
+@Table(name = "employees") // ✅ テーブル名指定
 @Data
-public class User {
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String userid;
-    private String password;
-    private String role;
+    private String name;
+    private Integer age;
+    private String department;
 }
+

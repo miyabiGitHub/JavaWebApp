@@ -1,17 +1,26 @@
 package com.javaapppractice.ankenkanri_system;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/employees")
+@CrossOrigin(origins = "*")
 public class EmployeeController {
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     @PostMapping
     public String registerEmployee(@RequestBody EmployeeRequest request) {
-        System.out.println("✅ 受け取った社員名: " + request.getName());
-        System.out.println("✅ 年齢: " + request.getAge());
-        System.out.println("✅ 部署: " + request.getDepartment());
+        Employee employee = new Employee();
+        employee.setName(request.getName());
+        employee.setAge(request.getAge());
+        employee.setDepartment(request.getDepartment());
+
+        Employee savedEmployee = employeeRepository.save(employee);
+        System.out.println("保存結果: " + savedEmployee.getId());
+
         return "社員登録成功！";
     }
 }
-
