@@ -1,5 +1,6 @@
 package com.javaapppractice.ankenkanri_system;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,5 +22,11 @@ public class UserController {
         userRepository.save(user);
         
         return "登録成功！";
+    }
+
+    // ✅ GET一覧取得API これ絶対必要
+    @GetMapping
+    public List<User> getAllUsers() {
+        return userRepository.findAll();  // ✅ DBの全ユーザを返す
     }
 }

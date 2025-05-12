@@ -46,7 +46,3 @@ function toggleSubMenu3() {
         submenu3.style.display = 'none';
     }
 }
-
-function logout() {
-    window.location.href = "index.html";
-}

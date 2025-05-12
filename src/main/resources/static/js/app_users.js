@@ -7,8 +7,20 @@ document.getElementById('usersForm').addEventListener('submit', function(event) 
     role: document.getElementById('role').value
   };
 
-  fetch('http://localhost:8080/users', {  // ★ 明示的に完全URL
-    method: 'POST',
+  const params = new URLSearchParams(window.location.search);
+  const useridParam = params.get('userid');
+
+  let url = '/users';
+  let method = 'POST';
+
+  if (useridParam) {
+      // ✅ 編集の場合はPUTで更新
+      url = `/users/${useridParam}`;
+      method = 'PUT';
+  }
+
+  fetch(url, {
+    method: method,
     headers: {
       'Content-Type': 'application/json'
     },
@@ -22,10 +34,33 @@ document.getElementById('usersForm').addEventListener('submit', function(event) 
   })
   .then(data => {
     alert('登録成功: ' + data);
+    window.location.href = "users_list.html";  // ✅ 戻る
   })
   .catch(error => {
     alert('登録失敗: ' + error);
   });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  // ✅ URLパラメータを取得
+  const params = new URLSearchParams(window.location.search);
+  const userid = params.get('userid');
+
+  if (userid) {
+      // ✅ ユーザ情報をサーバから取得
+      fetch(`/users/${userid}`)
+          .then(response => response.json())
+          .then(user => {
+              // ✅ フォームに値をセット
+              document.getElementById('userid').value = user.userid;
+              document.getElementById('password').value = user.password;
+              document.getElementById('role').value = user.role;
+          })
+          .catch(error => {
+              console.error('ユーザ取得エラー:', error);
+          });
+  }
 });
   
   function toggleSubMenu1() {
@@ -53,8 +88,4 @@ function toggleSubMenu3() {
     } else {
         submenu3.style.display = 'none';
     }
-}
-
-function logout() {
-    window.location.href = "index.html";
 }
