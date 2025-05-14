@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>社員情報登録</title>
+  <title>社員情報一覧</title>
   <link rel="stylesheet" href="/css/styles_common.css">
-  <link rel="stylesheet" href="/css/styles_employee.css">
+  <link rel="stylesheet" href="/css/styles_employee_list.css">
 </head>
 <body>
 
-  <div class="container">
+<div class="container">
     <!-- ✅ サイドバー（mainと同じ） -->
     <nav class="sidebar">
         <ul>
@@ -43,27 +43,23 @@
 
     <!-- ✅ メインコンテンツ -->
     <main class="content">
-        <h1>社員情報登録</h1>
-
-        <div class="employee-form">
-            <form id="employeeForm">
-                <label for="name">社員名</label>
-                <input type="text" id="name" name="name" required>
-              
-                <label for="age">年齢</label>
-                <input type="number" id="age" name="age" required><br>
-                <br>
-              
-                <label for="department">部署</label>
-                <input type="text" id="department" name="department" required>
-              
-                <button type="submit">登録</button>
-              </form>
-        </div>
-
+        <h1>社員情報一覧</h1>
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>社員名</th>
+                    <th>年齢</th>
+                    <th>部署</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="employee-list">
+                <!-- JSで生成される -->
+            </tbody>
+        </table>
     </main>
-  </div>
+</div>
 
-  <script src="/js/app_employee.js"></script>
+    <script src="/js/app_employee_list.js"></script>
 </body>
 </html>

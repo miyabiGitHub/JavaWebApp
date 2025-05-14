@@ -1,5 +1,7 @@
 package com.javaapppractice.ankenkanri_system;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,4 +25,24 @@ public class EmployeeController {
 
         return "社員登録成功！";
     }
+
+    // 社員一覧取得
+    @GetMapping
+    public List<Employee> getAllEmployees() {
+        return employeeRepository.findAll();
+    }
+
+    // 社員1件取得
+    @GetMapping("/{id}")
+    public Employee getEmployee(@PathVariable Long id) {
+        return employeeRepository.findById(id).orElse(null);
+    }
+
+    // 社員削除
+    @DeleteMapping("/{id}")
+    public String deleteEmployee(@PathVariable Long id) {
+        employeeRepository.deleteById(id);
+        return "削除成功！";
+    }
+
 }

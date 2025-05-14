@@ -1,23 +1,50 @@
-document.getElementById('employeeForm').addEventListener('submit', function(event) {
-  event.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('employeeForm');
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
 
-  const data = {
-    name: document.querySelector('input[name="name"]').value,
-    age: parseInt(document.querySelector('input[name="age"]').value),
-    department: document.querySelector('input[name="department"]').value
-  };
+  if (id) {
+    fetch(`/employees/${id}`)
+      .then(res => res.json())
+      .then(emp => {
+        document.getElementById('name').value = emp.name;
+        document.getElementById('age').value = emp.age;
+        document.getElementById('department').value = emp.department;
+      })
+      .catch(err => {
+        alert("取得失敗: " + err.message);
+      });
+  }
 
-  fetch('/employees', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  })
-  .then(response => {
-    if (!response.ok) throw new Error('エラー');
-    return response.text();
-  })
-  .then(data => alert('登録成功: ' + data))
-  .catch(error => alert('登録失敗: ' + error));
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const data = {
+      name: document.getElementById('name').value,
+      age: parseInt(document.getElementById('age').value),
+      department: document.getElementById('department').value
+    };
+
+    const url = id ? `/employees/${id}` : '/employees';
+    const method = id ? 'PUT' : 'POST';
+
+    fetch(url, {
+      method: method,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      if (!response.ok) throw new Error('登録失敗');
+      return response.text();
+    })
+    .then(msg => {
+      alert('✅ ' + msg);
+      window.location.href = 'employee_list.html';
+    })
+    .catch(error => {
+      alert('エラー: ' + error.message);
+    });
+  });
 });
   
   function toggleSubMenu1() {

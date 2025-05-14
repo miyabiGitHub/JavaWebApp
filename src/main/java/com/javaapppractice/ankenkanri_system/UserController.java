@@ -29,4 +29,37 @@ public class UserController {
     public List<User> getAllUsers() {
         return userRepository.findAll();  // ✅ DBの全ユーザを返す
     }
+
+    // ✅ ユーザIDで情報を取得（編集用）
+    @GetMapping("/{userid}")
+    public User getUser(@PathVariable String userid) {
+        return userRepository.findByUserid(userid);
+    }
+
+    // ✅ ユーザ情報を更新する
+    @PutMapping("/{userid}")
+    public String updateUser(@PathVariable String userid, @RequestBody UserRequest userRequest) {
+        User user = userRepository.findByUserid(userid);
+        if (user != null) {
+            user.setPassword(userRequest.getPassword());
+            user.setRole(userRequest.getRole());
+            userRepository.save(user);
+            return "更新成功！";
+        } else {
+            throw new RuntimeException("該当ユーザが存在しません");
+        }
+    }
+
+    // ✅ ユーザ削除
+    @DeleteMapping("/{userid}")
+    public String deleteUser(@PathVariable String userid) {
+        User user = userRepository.findByUserid(userid);
+        if (user != null) {
+            userRepository.delete(user);
+            return "削除成功！";
+        } else {
+            throw new RuntimeException("ユーザが存在しません");
+        }
+    }
+
 }
