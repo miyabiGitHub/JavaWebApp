@@ -6,33 +6,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/projects")
+@RequestMapping("/customers")
 @CrossOrigin
-public class ProjectController {
+public class CustomerController {
 
-  @Autowired
-  private ProjectRepository repo;
+  @Autowired private CustomerRepository repo;
 
   @GetMapping
-  public List<Project> getAll() {
+  public List<Customer> getAll() {
     return repo.findAll();
   }
 
   @PostMapping
-  public String register(@RequestBody Project p) {
-    repo.save(p);
-    return "登録成功";
+  public String register(@RequestBody Customer customer) {
+    repo.save(customer);
+    return "顧客登録成功";
   }
 
   @GetMapping("/{id}")
-  public Project getOne(@PathVariable Long id) {
+  public Customer getOne(@PathVariable Long id) {
     return repo.findById(id).orElse(null);
   }
 
   @PutMapping("/{id}")
-  public String update(@PathVariable Long id, @RequestBody Project p) {
-    p.setId(id);
-    repo.save(p);
+  public String update(@PathVariable Long id, @RequestBody Customer c) {
+    c.setId(id);
+    repo.save(c);
     return "更新成功";
   }
 
@@ -42,6 +41,4 @@ public class ProjectController {
     return "削除成功";
   }
 }
-
-
 

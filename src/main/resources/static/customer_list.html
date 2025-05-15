@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>社員情報一覧</title>
+    <title>顧客情報一覧</title>
     <link rel="stylesheet" href="/css/styles_common.css">
-    <link rel="stylesheet" href="/css/styles_employee_list.css">
+    <link rel="stylesheet" href="/css/styles_customer_list.css">
 </head>
 <body>
 
@@ -25,14 +25,15 @@
                 </li>
                 <li>
                     <a href="#" onclick="toggleSubMenu4()">顧客情報</a>
-                    <ul id="submenu4" style="display: none; margin-left: 20px;">
+                    <ul id="submenu4" style="margin-left: 20px;">
                         <li><a href="customer.html">新規顧客登録</a></li>
                         <li><a href="customer_list.html">顧客情報一覧</a></li>
                     </ul>
                 </li>
                 <li>
+                <li>
                     <a href="#" onclick="toggleSubMenu2()">社員情報</a>
-                    <ul id="submenu2" style="margin-left: 20px;">
+                    <ul id="submenu2" style="display: none; margin-left: 20px;">
                         <li><a href="employee_list.html">社員情報一覧</a></li>
                         <li><a href="employee.html">社員情報登録</a></li>
                     </ul>
@@ -48,25 +49,25 @@
             </ul>
         </nav>
 
-        <!-- ✅ メインコンテンツ -->
+    <!-- ✅ メインコンテンツ -->
         <main class="content">
-            <h1>社員情報一覧</h1>
+            <h1>顧客情報一覧</h1>
             <table class="user-table">
                 <thead>
                     <tr>
-                        <th>社員名</th>
-                        <th>年齢</th>
-                        <th>部署</th>
+                        <th>顧客名</th>
+                        <th>住所</th>
+                        <th>連絡先</th>
+                        <th>担当営業</th>
                         <th>操作</th>
                     </tr>
                 </thead>
-                <tbody id="employee-list">
-                    <!-- JSで生成される -->
+                <tbody id="customer-list">
+                    <!-- JSでtrが追加される -->
                 </tbody>
             </table>
         </main>
     </div>
-
-    <script src="/js/app_employee_list.js"></script>
+    <script src="/js/app_customer_list.js"></script>
 </body>
 </html>

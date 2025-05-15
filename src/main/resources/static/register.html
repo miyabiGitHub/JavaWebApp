@@ -1,82 +1,81 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>新規案件登録</title>
-  <link rel="stylesheet" href="/css/styles_common.css">
-  <link rel="stylesheet" href="/css/styles_register.css">  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規案件登録</title>
+    <link rel="stylesheet" href="/css/styles_common.css">
+    <link rel="stylesheet" href="/css/styles_register.css">  
 </head>
 <body>
 
-  <div class="container">
-    <!-- 🟡 ここはmain.htmlと同じサイドバーをそのまま記述 -->
-    <nav class="sidebar">
-      <ul>
-          <li><a href="register.html" onclick="showContent('案件新規登録')">案件新規登録</a></li>
-          <li>
-              <a href="#" onclick="toggleSubMenu1()">案件情報</a>
-              <ul id="submenu1" style="display: none; margin-left: 20px;">
-                  <li><a href="#">案件情報一覧</a></li>
-                  <li><a href="#">申請待ち</a></li>
-                  <li><a href="#">差し戻し</a></li>
-                  <li><a href="#">承認済み</a></li>
-              </ul>
-          </li>
-          <li>
-              <a href="#" onclick="toggleSubMenu2()">社員情報</a>
-              <ul id="submenu2" style="display: none; margin-left: 20px;">
-                  <li><a href="employee_list.html">社員情報一覧</a></li>
-                  <li><a href="employee.html">社員情報登録</a></li>
-              </ul>
-          </li>
-          <li>
-              <a href="#" onclick="toggleSubMenu3()">ユーザ情報</a>
-              <ul id="submenu3" style="display: none; margin-left: 20px;">
-                  <li><a href="users_list.html">ユーザ情報一覧</a></li>
-                  <li><a href="users.html">ユーザ情報登録</a></li>
-              </ul>
-          </li>
-          <li><a href="index.html">ログアウト</a></li>
-      </ul>
-    </nav>   
+    <div class="container">
+        <!-- 🟡 ここはmain.htmlと同じサイドバーをそのまま記述 -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="register.html" onclick="showContent('案件新規登録')">案件新規登録</a></li>
+                <li>
+                    <a href="#" onclick="toggleSubMenu1()">案件情報</a>
+                    <ul id="submenu1" style="display: none; margin-left: 20px;">
+                        <li><a href="project_list.html">案件情報一覧</a></li>
+                        <li><a href="#">申請待ち</a></li>
+                        <li><a href="#">差し戻し</a></li>
+                        <li><a href="#">承認済み</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleSubMenu4()">顧客情報</a>
+                    <ul id="submenu4" style="display: none; margin-left: 20px;">
+                        <li><a href="customer.html">新規顧客登録</a></li>
+                        <li><a href="customer_list.html">顧客情報一覧</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleSubMenu2()">社員情報</a>
+                    <ul id="submenu2" style="display: none; margin-left: 20px;">
+                        <li><a href="employee_list.html">社員情報一覧</a></li>
+                        <li><a href="employee.html">社員情報登録</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleSubMenu3()">ユーザ情報</a>
+                    <ul id="submenu3" style="display: none; margin-left: 20px;">
+                        <li><a href="users_list.html">ユーザ情報一覧</a></li>
+                        <li><a href="users.html">ユーザ情報登録</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html">ログアウト</a></li>
+            </ul>
+        </nav>   
 
-    <main class="content">
-        <h1>新規案件登録</h1>
+        <main class="content">
+            <h1>新規案件登録</h1>
         
-        <div class="register-form">
-        <form id="registerForm">
-            <label for="title">案件名</label>
-            <input type="text" name="title" id="title" required>
+            <div class="register-form">
+                <form id="projectForm">
+                    <label for="title">案件名</label>
+                    <input type="text" id="title" name="title" required>
+          
+                    <label for="customer">顧客名</label>
+                    <input type="text" id="customer" name="customer" required>
+          
+                    <label for="description">業務内容</label>
+                    <input type="text" id="description" name="description" required>
+          
+                    <label for="member">参画者</label>
+                    <input type="text" id="member" name="member" required>
+          
+                    <label for="sales">担当営業</label>
+                    <input type="text" id="sales" name="sales" required>
 
-            <label for="customer">顧客名</label>
-            <input type="text" name="customer" id="customer" required>
-
-            <label for="description">業務内容</label>
-            <input type="text" name="description" id="description" required>
-
-            <label for="syain">参画者</label>
-            <input type="text" name="syain" id="syain" required>
-            
-            <label for="eigyo">担当営業</label>
-            <select name="eigyo" id="eigyo">
-                <option value="1">山田 太郎</option>
-                <option value="2">佐藤 花子</option>
-                <option value="3">本田 二郎</option>
-            </select><br>
-
-            <label for="type">案件タイプ</label>
-            <select name="type" id="type">
-                <option value="infra">インフラ</option>
-                <option value="dev">開発</option>
-                <option value="other">その他</option>
-            </select><br>
-
-            <button type="submit">申請</button>
-        </form>
-        </div>
-    </main>
-</div>
+                    <label for="type">案件タイプ</label>
+                    <input type="text" id="type" name="type" required>
+          
+                    <button type="submit">登録</button>
+                  </form>
+            </div>
+        </main>
+    </div>
 
     <script src="/js/app_register.js"></script>
 </body>

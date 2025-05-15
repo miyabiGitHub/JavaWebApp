@@ -82,3 +82,12 @@ function toggleSubMenu3() {
         submenu3.style.display = 'none';
     }
 }
+
+function toggleSubMenu4() {
+    const submenu4 = document.getElementById('submenu4');
+    if (submenu4.style.display === 'none') {
+        submenu4.style.display = 'block';
+    } else {
+        submenu4.style.display = 'none';
+    }
+}

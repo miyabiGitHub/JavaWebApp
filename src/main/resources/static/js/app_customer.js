@@ -1,19 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('projectForm');
+    const form = document.getElementById('customerForm');
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
   
-    // ✅ 編集モードならデータ取得
+    // ✅ 編集モード時：既存のデータをフォームに反映
     if (id) {
-      fetch(`/projects/${id}`)
+      fetch(`/customers/${id}`)
         .then(res => res.json())
-        .then(p => {
-          document.getElementById('title').value = p.title;
-          document.getElementById('customer').value = p.customer;
-          document.getElementById('description').value = p.description;
-          document.getElementById('member').value = p.member;
-          document.getElementById('sales').value = p.sales;
-          document.getElementById('type').value = p.type;
+        .then(customer => {
+          document.getElementById('name').value = customer.name;
+          document.getElementById('address').value = customer.address;
+          document.getElementById('contact').value = customer.contact;
+          document.getElementById('sales').value = customer.sales;
         })
         .catch(err => alert("データ取得エラー: " + err.message));
     }
@@ -23,15 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
   
       const data = {
-        title: document.getElementById('title').value,
-        customer: document.getElementById('customer').value,
-        description: document.getElementById('description').value,
-        member: document.getElementById('member').value,
-        sales: document.getElementById('sales').value,
-        type: document.getElementById('type').value
+        name: document.getElementById('name').value,
+        address: document.getElementById('address').value,
+        contact: document.getElementById('contact').value,
+        sales: document.getElementById('sales').value
       };
   
-      const url = id ? `/projects/${id}` : '/projects';
+      const url = id ? `/customers/${id}` : '/customers';
       const method = id ? 'PUT' : 'POST';
   
       fetch(url, {
@@ -40,18 +36,16 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify(data)
       })
       .then(res => {
-        if (!res.ok) throw new Error("登録エラー");
+        if (!res.ok) throw new Error("保存エラー");
         return res.text();
       })
       .then(msg => {
         alert(msg);
-        window.location.href = "project_list.html";
+        window.location.href = "customer_list.html";
       })
       .catch(err => alert("登録失敗: " + err.message));
     });
-  });
-  
-
+  });  
 
 function toggleSubMenu1() {
     const submenu1 = document.getElementById('submenu1');
