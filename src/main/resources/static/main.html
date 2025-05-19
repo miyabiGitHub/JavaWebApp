@@ -18,9 +18,9 @@
                     <a href="#" onclick="toggleSubMenu1()">案件情報</a>
                     <ul id="submenu1" style="margin-left: 20px;">
                         <li><a href="project_list.html">案件情報一覧</a></li>
-                        <li><a href="#">申請待ち</a></li>
-                        <li><a href="#">差し戻し</a></li>
-                        <li><a href="#">承認済み</a></li>
+                        <li><a href="status_pending.html">承認待ち</a></li>
+                        <li><a href="status_rejected.html">差し戻し</a></li>
+                        <li><a href="status_approved.html">承認済み</a></li>
                     </ul>
                 </li>
                 <li>
@@ -44,6 +44,7 @@
                         <li><a href="users.html">ユーザ情報登録</a></li>
                     </ul>
                 </li>
+                <li><a href="/projects/export/csv">CSVエクスポート</a></li>
                 <li><a href="index.html">ログアウト</a></li>
             </ul>
         </nav>
@@ -51,16 +52,10 @@
         <!-- メインコンテンツ -->
         <main class="content">
             <h1 id="title">案件情報一覧</h1>
-            <div id="content-area">
-                <ul id="data-list">
-                    <li>案件1: システム開発</li>
-                    <li>案件2: ウェブサイト制作</li>
-                    <li>案件3: モバイルアプリ開発</li>
-                </ul>
-            </div>
         </main>
     </div>
 
     <script src="/js/app_main.js"></script>
+    <script src="/js/app_common.js"></script>
 </body>
 </html>

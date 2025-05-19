@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/css/styles_customer_list.css">
 </head>
 <body>
-
     <div class="container">
         <!-- ✅ サイドバー（mainと同じ） -->
         <nav class="sidebar">
@@ -18,9 +17,9 @@
                     <a href="#" onclick="toggleSubMenu1()">案件情報</a>
                     <ul id="submenu1" style="display: none; margin-left: 20px;">
                         <li><a href="project_list.html">案件情報一覧</a></li>
-                        <li><a href="#">申請待ち</a></li>
-                        <li><a href="#">差し戻し</a></li>
-                        <li><a href="#">承認済み</a></li>
+                        <li><a href="status_pending.html">承認待ち</a></li>
+                        <li><a href="status_rejected.html">差し戻し</a></li>
+                        <li><a href="status_approved.html">承認済み</a></li>
                     </ul>
                 </li>
                 <li>
@@ -30,7 +29,6 @@
                         <li><a href="customer_list.html">顧客情報一覧</a></li>
                     </ul>
                 </li>
-                <li>
                 <li>
                     <a href="#" onclick="toggleSubMenu2()">社員情報</a>
                     <ul id="submenu2" style="display: none; margin-left: 20px;">
@@ -45,6 +43,7 @@
                         <li><a href="users.html">ユーザ情報登録</a></li>
                     </ul>
                 </li>
+                <li><a href="/projects/export/csv" download>CSVエクスポート</a></li>
                 <li><a href="index.html">ログアウト</a></li>
             </ul>
         </nav>
@@ -69,5 +68,6 @@
         </main>
     </div>
     <script src="/js/app_customer_list.js"></script>
+    <script src="/js/app_common.js"></script>
 </body>
 </html>

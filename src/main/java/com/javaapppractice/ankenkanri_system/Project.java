@@ -18,5 +18,6 @@ public class Project {
     private String syain;
     private String eigyo;
     private String type;
+    private String status;
 }
 

@@ -1,12 +1,11 @@
-document.addEventListener('DOMContentLoaded', loadProjects);
+document.addEventListener('DOMContentLoaded', loadPending);
 
-function loadProjects() {
-  fetch('/projects')
+function loadPending() {
+  fetch('/projects/status/差し戻し')
     .then(res => res.json())
     .then(projects => {
       const list = document.getElementById('project-list');
       list.innerHTML = '';
-
       projects.forEach(p => {
         const row = `
           <tr>
@@ -16,17 +15,30 @@ function loadProjects() {
             <td>${p.member}</td>
             <td>${p.sales}</td>
             <td>${p.type}</td>
-            <td>${p.status}</td>
             <td>
               <button onclick="editProject(${p.id})">編集</button>
+              <button onclick="deleteProject(${p.id})">削除</button>
             </td>
           </tr>
         `;
         list.insertAdjacentHTML('beforeend', row);
       });
-    })
-    .catch(err => console.error("案件一覧取得失敗:", err));
+    });
 }
+
+function deleteProject(id) {
+    if (!confirm("本当に削除しますか？")) return;
+    fetch(`/projects/${id}`, { method: 'DELETE' })
+      .then(res => {
+        if (!res.ok) throw new Error("削除失敗");
+        return res.text();
+      })
+      .then(msg => {
+        alert(msg);
+        loadProjects();
+      })
+      .catch(err => alert("削除エラー: " + err.message));
+  }
 
 function editProject(id) {
   window.location.href = `register.html?id=${id}`;

@@ -1,12 +1,11 @@
-document.addEventListener('DOMContentLoaded', loadProjects);
+document.addEventListener('DOMContentLoaded', loadPending);
 
-function loadProjects() {
-  fetch('/projects')
+function loadPending() {
+  fetch('/projects/status/承認済み')
     .then(res => res.json())
     .then(projects => {
       const list = document.getElementById('project-list');
       list.innerHTML = '';
-
       projects.forEach(p => {
         const row = `
           <tr>
@@ -16,17 +15,15 @@ function loadProjects() {
             <td>${p.member}</td>
             <td>${p.sales}</td>
             <td>${p.type}</td>
-            <td>${p.status}</td>
             <td>
-              <button onclick="editProject(${p.id})">編集</button>
             </td>
           </tr>
         `;
         list.insertAdjacentHTML('beforeend', row);
       });
-    })
-    .catch(err => console.error("案件一覧取得失敗:", err));
+    });
 }
+
 
 function editProject(id) {
   window.location.href = `register.html?id=${id}`;

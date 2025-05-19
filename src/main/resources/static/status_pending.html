@@ -2,21 +2,18 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>社員情報登録</title>
+    <title>承認待ち案件一覧</title>
     <link rel="stylesheet" href="/css/styles_common.css">
-    <link rel="stylesheet" href="/css/styles_employee.css">
+    <link rel="stylesheet" href="/css/styles_status.css">
 </head>
 <body>
-
     <div class="container">
-        <!-- ✅ サイドバー（mainと同じ） -->
         <nav class="sidebar">
             <ul>
                 <li><a href="register.html" onclick="showContent('案件新規登録')">案件新規登録</a></li>
                 <li>
                     <a href="#" onclick="toggleSubMenu1()">案件情報</a>
-                    <ul id="submenu1" style="display: none; margin-left: 20px;">
+                    <ul id="submenu1" style="margin-left: 20px;">
                         <li><a href="project_list.html">案件情報一覧</a></li>
                         <li><a href="status_pending.html">承認待ち</a></li>
                         <li><a href="status_rejected.html">差し戻し</a></li>
@@ -32,7 +29,7 @@
                 </li>
                 <li>
                     <a href="#" onclick="toggleSubMenu2()">社員情報</a>
-                    <ul id="submenu2" style="margin-left: 20px;">
+                    <ul id="submenu2" style="display: none; margin-left: 20px;">
                         <li><a href="employee_list.html">社員情報一覧</a></li>
                         <li><a href="employee.html">社員情報登録</a></li>
                     </ul>
@@ -48,31 +45,25 @@
                 <li><a href="index.html">ログアウト</a></li>
             </ul>
         </nav>
-
-        <!-- ✅ メインコンテンツ -->
         <main class="content">
-            <h1>社員情報登録</h1>
-
-            <div class="employee-form">
-                <form id="employeeForm">
-                    <label for="name">社員名</label>
-                    <input type="text" id="name" name="name" required>
-              
-                    <label for="age">年齢</label>
-                    <input type="number" id="age" name="age" required><br>
-                    <br>
-              
-                    <label for="department">部署</label>
-                    <input type="text" id="department" name="department" required>
-              
-                    <button type="submit">登録</button>
-                </form>
-            </div>
-
+            <h1>承認待ちの案件一覧</h1>
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>案件名</th>
+                        <th>顧客名</th>
+                        <th>業務内容</th>
+                        <th>参画者</th>
+                        <th>担当営業</th>
+                        <th>案件タイプ</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="project-list"></tbody>
+            </table>
         </main>
     </div>
-
-    <script src="/js/app_employee.js"></script>
+    <script src="/js/app_status_pending.js"></script>
     <script src="/js/app_common.js"></script>
 </body>
 </html>
