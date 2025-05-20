@@ -17,6 +17,8 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         if (response.ok) {
             // ログイン成功
             window.location.href = "main.html";
+            // ログイン成功時に保存！
+            localStorage.setItem("loginUser", loginData.userid);  
         } else {
             // ログイン失敗
             document.getElementById('errorMessage').textContent = "ログインに失敗しました。";
@@ -28,13 +30,4 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     });
 });
 
-
-//document.getElementById("loginButton").addEventListener("click", function(myevent){
-//    myevent.preventDefault();
-//    mainPage();
-//});
-
-//function mainPage(){
-//    location.href="main.html"
-//}
 

@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
           document.getElementById('member').value = p.member;
           document.getElementById('sales').value = p.sales;
           document.getElementById('type').value = p.type;
+          document.getElementById('deadline').value;
+          parseInt(document.getElementById('amount').value);
         })
         .catch(err => alert("データ取得エラー: " + err.message));
     }
@@ -28,7 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
         description: document.getElementById('description').value,
         member: document.getElementById('member').value,
         sales: document.getElementById('sales').value,
-        type: document.getElementById('type').value
+        type: document.getElementById('type').value,
+        deadline: document.getElementById('deadline').value,
+        amount: parseInt(document.getElementById('amount').value),
       };
   
       const url = id ? `/projects/${id}` : '/projects';

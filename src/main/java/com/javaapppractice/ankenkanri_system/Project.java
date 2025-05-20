@@ -19,5 +19,7 @@ public class Project {
     private String eigyo;
     private String type;
     private String status;
+    private String deadline;
+    private int amount;
 }
 

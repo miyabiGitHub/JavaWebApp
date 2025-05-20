@@ -9,6 +9,15 @@
 </head>
 <body>
 
+    <!-- ✅ ヘッダー -->
+    <header class="header">
+        <div class="header-left">
+            <img src="/img/logo.png" alt="Logo" class="logo">
+        </div>
+        <div class="header-center">案件管理システム</div>
+        <div class="header-right" id="login-user">ログイン中: 未ログイン</div>
+    </header>
+
     <div class="container">
         <!-- サイドバー -->
         <nav class="sidebar">
@@ -57,5 +66,12 @@
 
     <script src="/js/app_main.js"></script>
     <script src="/js/app_common.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const user = localStorage.getItem("loginUser") || "未ログイン";
+            document.getElementById("login-user").textContent = `ログイン中: ${user}`;
+        });
+    </script>
+
 </body>
 </html>

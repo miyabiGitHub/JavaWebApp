@@ -16,6 +16,8 @@ function loadProjects() {
             <td>${p.member}</td>
             <td>${p.sales}</td>
             <td>${p.type}</td>
+            <td>${p.deadline}</td> <!-- ✅ -->
+            <td>¥${p.amount.toLocaleString()}</td> 
             <td>${p.status}</td>
             <td>
               <button onclick="editProject(${p.id})">編集</button>
