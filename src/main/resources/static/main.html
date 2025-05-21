@@ -39,14 +39,14 @@
                         <li><a href="customer_list.html">顧客情報一覧</a></li>
                     </ul>
                 </li>
-                <li>
+                <li id="menu-employee">
                     <a href="#" onclick="toggleSubMenu2()">社員情報</a>
                     <ul id="submenu2" style="display: none; margin-left: 20px;">
                         <li><a href="employee_list.html">社員情報一覧</a></li>
                         <li><a href="employee.html">社員情報登録</a></li>
                     </ul>
                 </li>
-                <li>
+                <li id="menu-user">
                     <a href="#" onclick="toggleSubMenu3()">ユーザ情報</a>
                     <ul id="submenu3" style="display: none; margin-left: 20px;">
                         <li><a href="users_list.html">ユーザ情報一覧</a></li>
@@ -68,10 +68,19 @@
     <script src="/js/app_common.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const user = localStorage.getItem("loginUser") || "未ログイン";
-            document.getElementById("login-user").textContent = `ログイン中: ${user}`;
+            const role = localStorage.getItem("loginRole");
+            if (role === "users") {
+            // 「社員情報」と「ユーザ情報」のメニューを非表示
+            const employeeMenu = document.getElementById("menu-employee");
+            const userMenu = document.getElementById("menu-user");
+            if (employeeMenu) employeeMenu.style.display = "none";
+            if (userMenu) userMenu.style.display = "none";
+        }
+
+        // ヘッダーのユーザー名表示も
+        const user = localStorage.getItem("loginUser") || "未ログイン";
+        document.getElementById("login-user").textContent = `ログイン中: ${user}`;
         });
     </script>
-
 </body>
 </html>

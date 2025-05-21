@@ -64,9 +64,11 @@
                     <label>連絡先</label>
                     <input type="text" id="contact" required>
               
-                    <label>担当営業</label>
-                    <input type="text" id="sales" required>
-              
+                    <label for="sales">担当営業</label>
+                    <select id="sales" name="sales">
+                        <option value="">営業担当を選択</option>
+                    </select>
+
                     <button type="submit">登録</button>
                 </form>
                 <script src="/js/app_customer.js"></script>

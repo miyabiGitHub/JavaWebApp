@@ -46,3 +46,20 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch(err => alert("登録失敗: " + err.message));
     });
   });  
+
+  document.addEventListener("DOMContentLoaded", () => {
+  fetch('/employees/sales')
+    .then(res => res.json())
+    .then(employees => {
+      const select = document.getElementById("sales");
+      employees.forEach(emp => {
+        const opt = document.createElement("option");
+        opt.value = emp.name;
+        opt.textContent = emp.name;
+        select.appendChild(opt);
+      });
+    })
+    .catch(err => {
+      console.error("営業部取得失敗:", err);
+    });
+});

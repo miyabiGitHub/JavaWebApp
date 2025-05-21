@@ -45,4 +45,16 @@ public class EmployeeController {
         return "削除成功！";
     }
 
+    //営業部の社員取得
+    @GetMapping("/sales")
+        public List<Employee> getSalesEmployees() {
+        return employeeRepository.findByDepartment("営業部");
+    }
+
+    //エンジニアリング部の社員取得
+    @GetMapping("/engineer")
+    public List<Employee> getEngineerMembers() {
+    return employeeRepository.findByDepartment("エンジニアリング部");
+}
+
 }

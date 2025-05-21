@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('name').value = emp.name;
         document.getElementById('age').value = emp.age;
         document.getElementById('department').value = emp.department;
+        document.getElementById('phone').value = emp.phone;
+        document.getElementById('pisition').value = emp.position;
       })
       .catch(err => {
         alert("取得失敗: " + err.message);
@@ -20,9 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
 
     const data = {
-      name: document.getElementById('name').value,
-      age: parseInt(document.getElementById('age').value),
-      department: document.getElementById('department').value
+      name: document.getElementById("name").value,
+      age: parseInt(document.getElementById("age").value),
+      phone: document.getElementById("phone").value,
+      department: document.getElementById("department").value,
+      position: document.getElementById("position").value
     };
 
     const url = id ? `/employees/${id}` : '/employees';

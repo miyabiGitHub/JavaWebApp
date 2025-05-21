@@ -1,6 +1,7 @@
 package com.javaapppractice.ankenkanri_system;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +40,13 @@ public class CustomerController {
   public String delete(@PathVariable Long id) {
     repo.deleteById(id);
     return "削除成功";
+  }
+
+  @GetMapping("/names")
+  public List<String> getCustomerNames() {
+    return customerRepository.findAll().stream()
+            .map(Customer::getName)
+            .collect(Collectors.toList());
   }
 }
 

@@ -12,7 +12,8 @@ function loadEmployees() {
           <tr>
             <td>${emp.name}</td>
             <td>${emp.age}</td>
-            <td>${emp.department}</td>
+            <td>${emp.position}</td>
+            <td>${emp.phone}</td>
             <td>
               <button onclick="editEmployee('${emp.id}')">編集</button>
               <button onclick="deleteEmployee('${emp.id}')">削除</button>

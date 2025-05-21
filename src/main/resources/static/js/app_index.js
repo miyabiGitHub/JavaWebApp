@@ -6,23 +6,16 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         password: document.getElementById('password').value
     };
 
-    fetch('/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(loginData)
+    fetch("/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(loginData)
     })
-    .then(response => {
-        if (response.ok) {
-            // ログイン成功
-            window.location.href = "main.html";
-            // ログイン成功時に保存！
-            localStorage.setItem("loginUser", loginData.userid);  
-        } else {
-            // ログイン失敗
-            document.getElementById('errorMessage').textContent = "ログインに失敗しました。";
-        }
+    .then(response => response.json())
+    .then(data => {
+    localStorage.setItem("loginUser", data.userid);
+    localStorage.setItem("loginRole", data.role); // ✅ 追加！
+    window.location.href = "main.html";
     })
     .catch(error => {
         console.error('エラー:', error);
