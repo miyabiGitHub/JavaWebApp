@@ -9,6 +9,15 @@
 </head>
 <body>
 
+  <!-- ✅ ヘッダー -->
+  <header class="header">
+    <div class="header-left">
+      <img src="/img/logo.png" alt="Logo" class="logo">
+    </div>
+    <div class="header-center">案件管理システム</div>
+    <div class="header-right" id="login-user">ログイン中: 未ログイン</div>
+  </header>
+
   <div class="container">
     <!-- 🟡 ここはmain.htmlと同じサイドバーをそのまま記述 -->
     <nav class="sidebar">
@@ -77,6 +86,22 @@
 
   <script src="/js/app_users.js"></script>
   <script src="/js/app_common.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const role = localStorage.getItem("loginRole");
+      if (role === "users") {
+      // 「社員情報」と「ユーザ情報」のメニューを非表示
+      const employeeMenu = document.getElementById("menu-employee");
+      const userMenu = document.getElementById("menu-user");
+      if (employeeMenu) employeeMenu.style.display = "none";
+      if (userMenu) userMenu.style.display = "none";
+      }
+
+      // ヘッダーのユーザー名表示も
+      const user = localStorage.getItem("loginUser") || "未ログイン";
+      document.getElementById("login-user").textContent = `ログイン中: ${user}`;
+    });
+    </script>
 
 </body>
 </html>

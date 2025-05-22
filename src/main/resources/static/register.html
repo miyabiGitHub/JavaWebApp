@@ -9,6 +9,15 @@
 </head>
 <body>
 
+    <!-- ✅ ヘッダー -->
+    <header class="header">
+        <div class="header-left">
+            <img src="/img/logo.png" alt="Logo" class="logo">
+        </div>
+        <div class="header-center">案件管理システム</div>
+        <div class="header-right" id="login-user">ログイン中: 未ログイン</div>
+    </header>
+
     <div class="container">
         <!-- 🟡 ここはmain.htmlと同じサイドバーをそのまま記述 -->
         <nav class="sidebar">
@@ -55,28 +64,32 @@
             <div class="register-form">
                 <form id="projectForm">
                     <label for="title">案件名</label>
-                    <input type="text" id="title" name="title" required>
-          
+                    <input type="text" id="title" name="title" required />
+
                     <label for="customer">顧客名</label>
-                    <input type="text" id="customer" name="customer" required>
-        
+                    <select id="customer" name="customer" required>顧客を選択</select>
+
                     <label for="amount">金額</label>
-                    <input type="number" id="amount" name="amount" required>
+                    <input type="number" id="amount" name="amount" required />
 
                     <label for="member">参画者</label>
-                    <input type="text" id="member" name="member" required>
-          
+                    <select id="member" name="member" required>参画者を選択</select>
+
                     <label for="sales">担当営業</label>
-                    <input type="text" id="sales" name="sales" required>
+                    <select id="sales" name="sales" required>担当営業を選択</select>
 
                     <label for="type">案件タイプ</label>
-                    <input type="text" id="type" name="type" required>
+                    <select id="type" name="type" required>
+                        <option value="インフラ">インフラ</option>
+                        <option value="開発">開発</option>
+                        <option value="その他">その他</option>
+                    </select>
 
                     <label for="description">業務内容</label>
-                    <input type="text" id="description" name="description" required>
+                    <textarea id="description" name="description" rows="3" required></textarea>
 
                     <label for="deadline">期限</label>
-                    <input type="date" id="deadline" name="deadline" required>
+                    <input type="date" id="deadline" name="deadline" required />
           
                     <button type="submit">登録</button>
                   </form>
@@ -86,5 +99,21 @@
 
     <script src="/js/app_register.js"></script>
     <script src="/js/app_common.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const role = localStorage.getItem("loginRole");
+            if (role === "users") {
+            // 「社員情報」と「ユーザ情報」のメニューを非表示
+            const employeeMenu = document.getElementById("menu-employee");
+            const userMenu = document.getElementById("menu-user");
+            if (employeeMenu) employeeMenu.style.display = "none";
+            if (userMenu) userMenu.style.display = "none";
+        }
+
+        // ヘッダーのユーザー名表示も
+        const user = localStorage.getItem("loginUser") || "未ログイン";
+        document.getElementById("login-user").textContent = `ログイン中: ${user}`;
+        });
+    </script>
 </body>
 </html>

@@ -44,7 +44,7 @@ public class CustomerController {
 
   @GetMapping("/names")
   public List<String> getCustomerNames() {
-    return customerRepository.findAll().stream()
+    return repo.findAll().stream()
             .map(Customer::getName)
             .collect(Collectors.toList());
   }
