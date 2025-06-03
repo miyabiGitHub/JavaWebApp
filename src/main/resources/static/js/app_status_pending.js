@@ -1,11 +1,12 @@
-document.addEventListener('DOMContentLoaded', loadPending);
+document.addEventListener('DOMContentLoaded', loadPendingProjects);
 
-function loadPending() {
-  fetch('/projects/status/承認待ち')
+function loadPendingProjects() {
+  fetch('/projects/status/申請待ち')
     .then(res => res.json())
     .then(projects => {
       const list = document.getElementById('project-list');
       list.innerHTML = '';
+
       projects.forEach(p => {
         const row = `
           <tr>
@@ -15,12 +16,7 @@ function loadPending() {
             <td>${p.member}</td>
             <td>${p.sales}</td>
             <td>${p.type}</td>
-            <td>
-              <button onclick="editProject(${p.id})">編集</button>
-              <button onclick="approveProject(${p.id})">承認</button>
-              <button onclick="rejectProject(${p.id})">差し戻し</button>
-              <button onclick="deleteProject(${p.id})">削除</button>
-            </td>
+            <td>${renderButtons(p)}</td>
           </tr>
         `;
         list.insertAdjacentHTML('beforeend', row);
@@ -28,50 +24,41 @@ function loadPending() {
     });
 }
 
-function approveProject(id) {
-    if (!confirm("この案件を承認しますか？")) return;
-  
-    fetch(`/projects/${id}/approve`, { method: 'PUT' })
-      .then(res => res.text())
-      .then(msg => {
-        alert(msg);
-        loadPending();
-      })
-      .catch(err => alert("承認エラー: " + err.message));
+function editProject(id) {
+  window.location.href = `register.html?id=${id}`;
+}
+
+function submitProject(id) {
+  if (!confirm("この案件を申請しますか？")) return;
+  fetch(`/projects/${id}/submit`, { method: 'PUT' })
+    .then(res => res.text())
+    .then(msg => {
+      alert(msg);
+      loadPendingProjects();
+    })
+    .catch(err => alert("申請エラー: " + err.message));
 }
 
 function deleteProject(id) {
-    if (!confirm("本当に削除しますか？")) return;
-    fetch(`/projects/${id}`, { method: 'DELETE' })
-      .then(res => {
-        if (!res.ok) throw new Error("削除失敗");
-        return res.text();
-      })
-      .then(msg => {
-        alert(msg);
-        loadProjects();
-      })
-      .catch(err => alert("削除エラー: " + err.message));
-}
-
-function rejectProject(id) {
-    if (!confirm("この案件を差し戻しますか？")) return;
-  
-    fetch(`/projects/${id}/reject`, {
-      method: 'PUT'
-    })
+  if (!confirm("本当に削除しますか？")) return;
+  fetch(`/projects/${id}`, { method: 'DELETE' })
     .then(res => {
-      if (!res.ok) throw new Error("差し戻し失敗");
+      if (!res.ok) throw new Error("削除失敗");
       return res.text();
     })
-    .then(msg => {
-      alert(msg);
-      loadPending(); // 再読み込み
-    })
-    .catch(err => alert("差し戻しエラー: " + err.message));
+    .then(() => loadPendingProjects())
+    .catch(err => alert("削除エラー: " + err.message));
 }
-  
 
-function editProject(id) {
-  window.location.href = `register.html?id=${id}`;
+function renderButtons(project) {
+  const role = localStorage.getItem("loginRole");
+  let html = "";
+
+  if (role === "users") {
+    html += `<button onclick="submitProject(${project.id})">申請</button>`;
+    html += `<button onclick="editProject(${project.id})">編集</button>`;
+    html += `<button onclick="deleteProject(${project.id})">削除</button>`;
+  }
+
+  return html;
 }

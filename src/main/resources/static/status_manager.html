@@ -57,7 +57,7 @@
             </ul>
         </nav>
         <main class="content">
-            <h1>承認済みの案件一覧</h1>
+            <h1>部長承認待ちの案件一覧</h1>
             <table class="user-table">
                 <thead>
                     <tr>
@@ -74,7 +74,7 @@
             </table>
         </main>
     </div>
-    <script src="/js/app_status_approved.js"></script>
+    <script src="/js/app_project_common.js"></script>
     <script src="/js/app_common.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -90,6 +90,10 @@
         // ヘッダーのユーザー名表示も
         const user = localStorage.getItem("loginUser") || "未ログイン";
         document.getElementById("login-user").textContent = `ログイン中: ${user}`;
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadProjectsByStatus("部長承認待ち", "manager");
         });
     </script>
 </body>

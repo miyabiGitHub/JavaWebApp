@@ -46,3 +46,37 @@ function remove(id) {
   fetch(`/projects/${id}`, { method: 'DELETE' })
     .then(() => loadProjects());
 }
+
+function approveProject(id) {
+    const role = localStorage.getItem("loginRole");
+
+    fetch(`/projects/${id}/approve?role=${role}`, {
+        method: "PUT"
+    })
+    .then(res => {
+        if (!res.ok) throw new Error("承認失敗");
+        return res.text();
+    })
+    .then(msg => {
+        alert(msg);
+        loadProjects(); // 再読み込み
+    })
+    .catch(err => alert("承認エラー: " + err.message));
+}
+
+function renderButtons(project) {
+    const role = localStorage.getItem("loginRole");
+    let html = "";
+
+    if ((project.status === "承認待ち" && role === "manager") ||
+        (project.status === "部長承認待ち" && role === "admin") ||
+        (project.status === "最終承認待ち" && role === "admin")) {
+        html += `<button onclick="approveProject(${project.id})">承認</button>`;
+    }
+
+    if ((project.status === "承認待ち" || project.status === "差し戻し") && role !== "admin") {
+        html += `<button onclick="deleteProject(${project.id})">削除</button>`;
+    }
+
+    return html;
+}

@@ -27,9 +27,10 @@
               <a href="#" onclick="toggleSubMenu1()">案件情報</a>
               <ul id="submenu1" style="display: none; margin-left: 20px;">
                   <li><a href="project_list.html">案件情報一覧</a></li>
-                  <li><a href="status_pending.html">承認待ち</a></li>
-                  <li><a href="status_rejected.html">差し戻し</a></li>
-                  <li><a href="status_approved.html">承認済み</a></li>
+                  <li><a href="status_pending.html">申請待ち</a></li>
+                  <li><a href="status_manager.html">部長承認待ち</a></li>
+                  <li><a href="status_admin.html">最終承認待ち</a></li>
+                  <li><a href="status_approved.html">最終承認済み</a></li>
               </ul>
           </li>
           <li>
@@ -74,7 +75,8 @@
           <label for="role">ロール</label>
           <select id="role" name="role">
             <option value="users">一般</option>
-            <option value="root">管理者</option>
+            <option value="manager">部長</option>
+            <option value="admin">社長</option>
           </select>
 
           <button type="submit">登録</button>
