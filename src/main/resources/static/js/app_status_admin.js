@@ -30,12 +30,13 @@ function loadAdminApproval() {
 
 function renderButtons(project) {
   const role = localStorage.getItem("loginRole");
-  if (role !== "admin") return "";
-
-  return `
-    <button onclick="approveProject(${project.id})">承認</button>
-    <button onclick="rejectProject(${project.id})">差し戻し</button>
-  `;
+  if (project.status === "最終承認待ち" && role === "admin") {
+    return `
+      <button onclick="approveProject(${project.id})">承認</button>
+      <button onclick="rejectProject(${project.id})">差戻</button>
+    `;
+  }
+  return "";
 }
 
 function approveProject(id) {

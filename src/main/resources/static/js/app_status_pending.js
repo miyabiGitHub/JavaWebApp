@@ -54,7 +54,7 @@ function renderButtons(project) {
   const role = localStorage.getItem("loginRole");
   let html = "";
 
-  if (role === "users") {
+  if (project.status === "申請待ち" && role === "users") {
     html += `<button onclick="submitProject(${project.id})">申請</button>`;
     html += `<button onclick="editProject(${project.id})">編集</button>`;
     html += `<button onclick="deleteProject(${project.id})">削除</button>`;

@@ -40,6 +40,11 @@ function renderButtons(p, mode) {
     html += `<button onclick="deleteProject(${id})">削除</button>`;
   }
 
+  if (mode === "admin" && role === "admin") {
+  html += `<button onclick="approve(${id})">承認</button>`;
+  html += `<button onclick="reject(${id})">差戻</button>`;
+  }
+  
   return html;
 }
 

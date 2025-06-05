@@ -52,3 +52,7 @@ function rejectProject(id) {
 function editProject(id) {
   window.location.href = `register.html?id=${id}`;
 }
+
+function renderButtons() {
+  return ""; // 最終承認済み → ボタン非表示
+}

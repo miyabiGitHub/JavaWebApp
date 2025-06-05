@@ -31,13 +31,15 @@ function loadManagerApproval() {
 // ✅ 操作ボタン（manager専用）
 function renderButtons(project) {
   const role = localStorage.getItem("loginRole");
-  if (role !== "manager") return "";
-
-  return `
-    <button onclick="approveProject(${project.id})">承認</button>
-    <button onclick="rejectProject(${project.id})">差し戻し</button>
-  `;
+  if (project.status === "部長承認待ち" && role === "manager") {
+    return `
+      <button onclick="approveProject(${project.id})">承認</button>
+      <button onclick="rejectProject(${project.id})">差戻</button>
+    `;
+  }
+  return "";
 }
+
 
 // ✅ 承認
 function approveProject(id) {

@@ -1,7 +1,11 @@
 package com.javaapppractice.ankenkanri_system;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Data
 public class ProjectRequest {
     private String title;

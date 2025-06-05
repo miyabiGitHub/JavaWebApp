@@ -5,7 +5,11 @@ import java.time.LocalDate;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "projects")  // ✅ テーブル名指定
 @Data

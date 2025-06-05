@@ -1,26 +1,33 @@
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+  e.preventDefault();
 
-    const loginData = {
-        userid: document.getElementById('username').value,
-        password: document.getElementById('password').value
-    };
+  const data = {
+    userid: document.getElementById('username').value,
+    password: document.getElementById('password').value
+  };
 
-    fetch("/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(loginData)
-    })
-    .then(response => response.json())
-    .then(data => {
-    localStorage.setItem("loginUser", data.userid);
-    localStorage.setItem("loginRole", data.role); // ✅ 追加！
-    window.location.href = "main.html";
-    })
-    .catch(error => {
-        console.error('エラー:', error);
-        document.getElementById('errorMessage').textContent = "サーバーエラーが発生しました。";
-    });
+  fetch('/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(async res => {
+    if (!res.ok) {
+      const msg = await res.text();
+      throw new Error(msg || 'ログイン失敗');
+    }
+    return res.json();
+  })
+  .then(user => {
+    // ユーザ情報をローカルに保存（権限チェック用）
+    localStorage.setItem('loginUser', user.userid);
+    localStorage.setItem('loginRole', user.role);
+    window.location.href = 'main.html';
+  })
+  .catch(err => {
+    document.getElementById('error-message').textContent = err.message;
+  });
 });
+
 
 
