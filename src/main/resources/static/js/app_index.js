@@ -22,7 +22,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     // ユーザ情報をローカルに保存（権限チェック用）
     localStorage.setItem('loginUser', user.userid);
     localStorage.setItem('loginRole', user.role);
-    window.location.href = 'main.html';
+    window.location.href = 'project_list.html';
   })
   .catch(err => {
     document.getElementById('error-message').textContent = err.message;

@@ -1,0 +1,39 @@
+<!-- common/sidebar.html -->
+<!-- サイドバー -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="register.html" onclick="showContent('案件新規登録')">案件新規登録</a></li>
+                <li>
+                    <a href="#" onclick="toggleSubMenu1()">案件情報</a>
+                    <ul id="submenu1" style="margin-left: 20px;">
+                        <li><a href="project_list.html">案件情報一覧</a></li>
+                        <li id="pending"><a href="status_pending.html">申請待ち</a></li>
+                        <li id="manager"><a href="status_manager.html">部長承認待ち</a></li>
+                        <li id="admin"><a href="status_admin.html">最終承認待ち</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleSubMenu4()">顧客情報</a>
+                    <ul id="submenu4" style="margin-left: 20px;">
+                        <li><a href="customer.html">新規顧客登録</a></li>
+                        <li><a href="customer_list.html">顧客情報一覧</a></li>
+                    </ul>
+                </li>
+                <li id="menu-employee">
+                    <a href="#" onclick="toggleSubMenu2()">社員情報</a>
+                    <ul id="submenu2" style="margin-left: 20px;">
+                        <li><a href="employee_list.html">社員情報一覧</a></li>
+                        <li><a href="employee.html">社員情報登録</a></li>
+                    </ul>
+                </li>
+                <li id="menu-user">
+                    <a href="#" onclick="toggleSubMenu3()">ユーザ情報</a>
+                    <ul id="submenu3" style="margin-left: 20px;">
+                        <li><a href="users_list.html">ユーザ情報一覧</a></li>
+                        <li><a href="users.html">ユーザ情報登録</a></li>
+                    </ul>
+                </li>
+                <li><a href="/projects/export/csv">CSVエクスポート</a></li>
+                <li><a href="index.html">ログアウト</a></li>
+            </ul>
+        </nav>

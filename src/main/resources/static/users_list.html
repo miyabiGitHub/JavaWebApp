@@ -5,60 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ユーザ情報一覧</title>
   <link rel="stylesheet" href="/css/styles_common.css">
-  <link rel="stylesheet" href="/css/styles_users_list.css">
 </head>
 <body>
 
   <!-- ✅ ヘッダー -->
-  <header class="header">
-    <div class="header-left">
-      <img src="/img/logo.png" alt="Logo" class="logo">
-    </div>
-    <div class="header-center">案件管理システム</div>
-    <div class="header-right" id="login-user">ログイン中: 未ログイン</div>
-  </header>
-
+  <div id="header-area"></div>
   <div class="container">
     <!-- 🟡 ここはmain.htmlと同じサイドバーをそのまま記述 -->
-    <nav class="sidebar">
-      <ul>
-          <li><a href="register.html" onclick="showContent('案件新規登録')">案件新規登録</a></li>
-          <li>
-              <a href="#" onclick="toggleSubMenu1()">案件情報</a>
-              <ul id="submenu1" style="display: none; margin-left: 20px;">
-                  <li><a href="project_list.html">案件情報一覧</a></li>
-                  <li><a href="status_pending.html">申請待ち</a></li>
-                  <li><a href="status_manager.html">部長承認待ち</a></li>
-                  <li><a href="status_admin.html">最終承認待ち</a></li>
-                  <li><a href="status_approved.html">最終承認済み</a></li>
-              </ul>
-          </li>
-          <li>
-            <a href="#" onclick="toggleSubMenu4()">顧客情報</a>
-            <ul id="submenu4" style="display: none; margin-left: 20px;">
-              <li><a href="customer.html">新規顧客登録</a></li>
-              <li><a href="customer_list.html">顧客情報一覧</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#" onclick="toggleSubMenu2()">社員情報</a>
-            <ul id="submenu2" style="display: none; margin-left: 20px;">
-                <li><a href="employee_list.html">社員情報一覧</a></li>
-                <li><a href="employee.html">社員情報登録</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#" onclick="toggleSubMenu3()">ユーザ情報</a>
-            <ul id="submenu3" style="margin-left: 20px;">
-              <li><a href="users_list.html">ユーザ情報一覧</a></li>
-              <li><a href="users.html">ユーザ情報登録</a></li>
-            </ul>
-          </li>
-          <li><a href="/projects/export/csv" download>CSVエクスポート</a></li>
-          <li><a href="index.html">ログアウト</a></li>
-      </ul>
-    </nav>   
-
+    <div id="sidebar-area"></div>
     <!-- 🔥 ここが右側のメイン -->
     <main class="content">
         <h1>ユーザ情報一覧</h1>
@@ -79,21 +33,6 @@
 
   <script src="/js/app_users_list.js"></script>
   <script src="/js/app_common.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const role = localStorage.getItem("loginRole");
-      if (role === "users") {
-      // 「社員情報」と「ユーザ情報」のメニューを非表示
-      const employeeMenu = document.getElementById("menu-employee");
-      const userMenu = document.getElementById("menu-user");
-      if (employeeMenu) employeeMenu.style.display = "none";
-      if (userMenu) userMenu.style.display = "none";
-      }
-
-      // ヘッダーのユーザー名表示も
-      const user = localStorage.getItem("loginUser") || "未ログイン";
-      document.getElementById("login-user").textContent = `ログイン中: ${user}`;
-    });
-    </script>
+  <script src="/js/include.js"></script>
 </body>
 </html>
